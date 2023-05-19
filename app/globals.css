@@ -8,20 +8,59 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .category-card {
+    height: 6rem;
+    width: 100%;
+    border: 2px solid #000000;
+    border-top: 6px solid #000000;
+    border-bottom: 6px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    background-color: #060ce9;
+    grid-auto-rows: 100px;
+  }
+
+  .card {
+    height: 6rem;
+    width: 100%;
+    border: 2px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    background-color: #060ce9;
+    grid-auto-rows: 100px;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.zoomed {
+  z-index: 9999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 98vw;
+  height: 98vh;
+
+  animation-duration: 0.25s;
+  animation-name: zoom;
+}
+
+@keyframes zoom {
+  from {
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
